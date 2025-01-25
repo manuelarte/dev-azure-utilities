@@ -17,5 +17,12 @@
         "https://dev.azure.com/*/*/_sprints/*"
       ]
     }
-  ]
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["html/snackbar.html", "html/snackbar.css"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "permissions": ["clipboardWrite"]
 }

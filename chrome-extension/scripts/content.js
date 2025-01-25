@@ -26,7 +26,11 @@ if (sprintTableBody) {
                 // Attach button
                 const boltButton = divTasks[j].querySelector('button.bolt-icon-button')
                 boltButton.addEventListener('dblclick', () => {
-                    navigator.clipboard.writeText(branchName).finally();
+                    navigator.clipboard.writeText(branchName).then(
+                        () => {
+                            loadSnackbar(`Branch name '${branchName}' copied to clipboard`)
+                        }
+                    ).finally();
                 })
 
 
@@ -40,4 +44,50 @@ if (sprintTableBody) {
 function replaceTaskTitle(title) {
     let replaced = title.replace(/\s+/g, '-').toLowerCase();
     return replaced.substring(0, maxTitleLength)
+}
+
+function loadSnackbar(message) {
+    // Load the snackbar.html
+    fetch(chrome.runtime.getURL("./html/snackbar.html"))
+        .then((response) => response.text())
+        .then((html) => {
+            // Inject the snackbar into the DOM
+            let snackbarContainerWrapper = document.body.querySelector('div.dev-azure-utilities-snackbar-container-wrapper');
+            console.log(snackbarContainerWrapper)
+            if (snackbarContainerWrapper == null) {
+                console.log("Setting snackbarContainerWrapper")
+                snackbarContainerWrapper = document.createElement("div");
+                snackbarContainerWrapper.classList.add("dev-azure-utilities-snackbar-container-wrapper");
+                document.body.appendChild(snackbarContainerWrapper);
+            }
+            snackbarContainerWrapper.innerHTML = html;
+
+            // Dynamically load the CSS
+            const snackbarCSS = document.head.querySelector('link.dev-azure-utilities-snackbar')
+            if (snackbarCSS == null) {
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.type = "text/css";
+                link.className = 'dev-azure-utilities-snackbar'
+                link.href = chrome.runtime.getURL("./html/snackbar.css");
+                document.head.appendChild(link);
+            }
+
+            // Show the snackbar
+            showSnackbar(message);
+        });
+}
+
+
+function showSnackbar(message) {
+    const snackbar = document.getElementById("snackbar");
+    snackbar.textContent = message; // Set the message
+    snackbar.className = "show";
+
+    // Hide the snackbar after 3 seconds
+    setTimeout(() => {
+        snackbar.className = snackbar.className.replace("show", "");
+        // Optionally remove the snackbar from the DOM
+        snackbar.remove();
+    }, 3000);
 }
