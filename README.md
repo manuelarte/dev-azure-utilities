@@ -1,14 +1,14 @@
 <img src="logo.svg" alt="logo" width="75"/>
 
-# Dev Azure Utilities
+# 🪛 Dev Azure Utilities
 
 Chrome extension with utilities to facilitate the interaction with dev.azure.com
 
-## Chrome-Extension
+## 🌐 Chrome-Extension
 
-Inside [chrome-extension](./chrome-extension) there is a Chrome Extension with the features described in [features](#features)
+Inside [chrome-extension](./chrome-extension) folder there is a Chrome Extension with the features described in [features](#features)
 
-### How To Install It
+### ⬇️ How To Install It
 
 + Clone the repository
 + Add the extension to Chrome (for more info check [this](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world))
@@ -17,7 +17,7 @@ Inside [chrome-extension](./chrome-extension) there is a Chrome Extension with t
   + Click on `Load unpacked`
   + Check that the extension is installed
 
-### Features
+### 📃 Features
 
 #### Copy Branch Name From Work Item
 
@@ -28,7 +28,7 @@ The branch name is created by following this pattern: `feature/${parent_work_ite
 
 So if we check the image, the text copied to the clipboard for the *task number 4* would be: `feature/3/Upload-videos-and-tag-in-Roboflow`
 
-## TODO
+## 💡 TODO
 
 - Ability to personalize branch name strategy
 
