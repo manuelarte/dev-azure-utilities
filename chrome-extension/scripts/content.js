@@ -53,9 +53,7 @@ function loadSnackbar(message) {
         .then((html) => {
             // Inject the snackbar into the DOM
             let snackbarContainerWrapper = document.body.querySelector('div.dev-azure-utilities-snackbar-container-wrapper');
-            console.log(snackbarContainerWrapper)
             if (snackbarContainerWrapper == null) {
-                console.log("Setting snackbarContainerWrapper")
                 snackbarContainerWrapper = document.createElement("div");
                 snackbarContainerWrapper.classList.add("dev-azure-utilities-snackbar-container-wrapper");
                 document.body.appendChild(snackbarContainerWrapper);
