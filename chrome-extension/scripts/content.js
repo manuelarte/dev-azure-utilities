@@ -54,7 +54,7 @@ function addDoubleClickListenerToTasks(story) {
 }
 
 function replaceTaskTitle(title) {
-    let replaced = title.replace(/\s+/g, '-').toLowerCase();
+    let replaced = title.replace(/[\s/]+/g, '-').toLowerCase();
     return replaced.substring(0, maxTitleLength)
 }
 
