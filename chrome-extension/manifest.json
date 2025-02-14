@@ -12,9 +12,15 @@
   },
   "content_scripts": [
     {
-      "js": ["scripts/content.js"],
+      "js": ["scripts/branchCopy.js"],
       "matches": [
         "https://dev.azure.com/*/*/_sprints/*"
+      ]
+    },
+    {
+      "js": ["scripts/featuresToPptx.js"],
+      "matches": [
+        "https://dev.azure.com/*/_queries/*"
       ]
     }
   ],
