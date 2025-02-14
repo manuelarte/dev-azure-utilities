@@ -28,6 +28,10 @@
     {
       "resources": ["html/snackbar.html", "html/snackbar.css"],
       "matches": ["<all_urls>"]
+    },
+    {
+      "resources": ["libs/jszip.min.js", "libs/pptxgen.min.js"],
+      "matches": ["<all_urls>"]
     }
   ],
   "permissions": ["clipboardWrite"]

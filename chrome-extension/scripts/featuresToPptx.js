@@ -1,6 +1,17 @@
 
 //<script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/libs/jszip.min.js"></script>
 //<script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/dist/pptxgen.min.js"></script>
+const scriptJszip = document.createElement('script');
+scriptJszip.type = "text/javascript";
+scriptJszip.src = chrome.runtime.getURL('./libs/jszip.min.js');
+
+const scriptPptxgen = document.createElement('script');
+scriptPptxgen.type = "text/javascript";
+scriptPptxgen.src = chrome.runtime.getURL('./libs/pptxgen.min.js');
+
+document.head.appendChild(scriptJszip);
+document.head.appendChild(scriptPptxgen);
+
 
 const observer = new MutationObserver(mutationList => {
     mutationList.filter(m => m.type === 'childList').forEach(m => {
