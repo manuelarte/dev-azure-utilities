@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "Azure-Utilities Extensions",
+  "version": "0.0.1",
+  "description": "Azure-Utilities extension with functionality to be shared",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Manu Chrome",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "storage",
+    "clipboardWrite"
+  ],
+  "content_scripts": [
+    {
+      "js": ["branchCopy.js"],
+      "matches": [
+        "https://dev.azure.com/*/*/_sprints/*"
+      ]
+    },
+    {
+      "js": ["featuresToPptx.js"],
+      "matches": [
+        "https://dev.azure.com/**/_queries/**"
+      ]
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_idle",
+      "js": [
+        "contentScript.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["html/snackbar.html", "html/snackbar.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
